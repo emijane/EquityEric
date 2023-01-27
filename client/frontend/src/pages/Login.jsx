@@ -12,37 +12,37 @@ const AuthPage = () => {
    * I'll do the switching of the auth - help - contact on this page
    */
   return (
-    <div className="AuthPage-container-center w-[100vw] flex justify-center items-center">
-      <div className="AuthPage-container-outer pt-8 px-8 bg-white max-w-[1200px] w-[100vw] h-auto flex flex-row overflow-y-auto">
-        <div className="hero-component-placeholder rounded-[18px] px-14 py-4 pb-20 hidden md:flex flex-col md:w-1/2 h-auto">
-          <div className="hero-component-top text-lg font-bold tracking-tight">
+    <div className="AuthPage-container-center w-[100vw] h-[95vh] 2xl:h-[100vh] flex justify-center items-center">
+      <div className="AuthPage-container-outer pt-8 xl:pt-0 px-8 bg-white max-w-[1200px] 2xl:max-w-[1550px] 3xl:max-w-[90vw] w-[100vw] h-auto 2xl:h-[90vh] flex flex-row overflow-y-auto">
+        <div className="hero-component-placeholder rounded-[18px] px-14 3xl:px-20 py-4 2xl:py-8 pb-20 hidden md:flex flex-col md:w-1/2 h-auto">
+          <div className="hero-component-top text-lg 2xl:text-2xl 3xl:text-3xl font-bold tracking-tight">
             Ask Eric
           </div>
           <div className="hero-component-content">
-            <div className="hero-component-header mt-16 text-5xl tracking-tight pr-2 font-bold">
+            <div className="hero-component-header mt-16 3xl:mt-20 text-5xl 2xl:text-6xl 3xl:text-7xl tracking-tight pr-2 font-bold">
               Get the help you deserve
             </div>
-            <div className="hero-component-sub mt-6 text-md tracking-wide leading-8 pr-2 font-normal">
+            <div className="hero-component-sub mt-6 2xl:mt-10 3xl:mt-18 text-md 2xl:text-2xl 3xl:text-3xl tracking-wide leading-8 pr-2 font-normal">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt
             </div>
-            <div className="hero-component-testimonials w-full rounded-md px-8 py-8 mt-8">
+            <div className="hero-component-testimonials w-full rounded-md px-8 py-8 2xl:px-10 mt-8 2xl:mt-20">
               {/** Note: This one is not gonna have right padding since it should extend the whole width */}
-              <div className="testimonial-content text-white trackind-wide text-md">
+              <div className="testimonial-content text-white trackind-wide text-md 2xl:text-2xl 3xl:text-3xl 3xl:tracking-wider">
                 “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.”
               </div>
-              <div className="testimonial-footer mt-4 flex">
+              <div className="testimonial-footer mt-4 2xl:mt-10 flex">
                 <div className="person-image">
                   <img
                     alt="Guy in testimonial"
                     src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
-                    className="testimonial-picture w-16 rounded-full"
+                    className="testimonial-picture w-16 2xl:w-20 rounded-full"
                   />
                 </div>
                 <div className="person-info ml-6 flex flex-col justify-center gap-1">
-                  <div className="person-name text-white">Angel Lopez Pol</div>
-                  <div className="person-role text-white text-sm font-thin">
+                  <div className="person-name text-white 2xl:text-xl">Angel Lopez Pol</div>
+                  <div className="person-role text-white text-sm 2xl:text-lg font-thin">
                     Consumer
                   </div>
                 </div>
@@ -52,7 +52,7 @@ const AuthPage = () => {
         </div>
         <div className="home-help-contact-container md:px-8 flex flex-col w-full md:w-1/2 items-center rounded-xl">
           <div className="home-tabs hidden md:flex w-full py-4 justify-center items-center">
-            <div className="max-w-sm w-4/5 flex justify-around text-md font-semi-bold">
+            <div className="max-w-sm 3xl:max-w-md w-4/5 flex justify-around text-md 2xl:text-xl 3xl:text-3xl 3xl:py-4 font-semi-bold">
               <div className="">Home</div>
               <div className="">Help</div>
               <div className="">Contact</div>
@@ -61,7 +61,7 @@ const AuthPage = () => {
           <div className="auth-component-sign-up mt-10 xs:min-w-sm md:min-w-md w-5/6 md:w-3/4">
             <div className="auth-component-header">
               <div className="hidden md:flex flex-col gap-y-1 auth-component-header-large">
-                <h3 className="flex text-3xl font-bold">Get Started 👋</h3>
+                <h3 className="flex text-3xl 2xl:text-5xl 3xl:text-6xl font-bold">Get Started 👋</h3>
                 <p className="text-cleargray text-sm">
                   Create your account now
                 </p>
