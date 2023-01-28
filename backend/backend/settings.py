@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'guineapig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,6 +69,7 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = "backend.asgi.application"
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
@@ -122,3 +124,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
