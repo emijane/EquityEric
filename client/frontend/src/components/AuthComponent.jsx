@@ -20,7 +20,7 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
     e.preventDefault();
     // Trippy stuff but we fetch to our backend, get an accessToken that we 
     try {
-      const response = await fetch(`${process.env.BACKEND_URL}/api/signup`,
+      const response = await fetch(`http://localhost:3001/api/signup`,
           JSON.stringify({ email, pwd, firstName, lastName }),
           {
               headers: { 'Content-Type': 'application/json' },
