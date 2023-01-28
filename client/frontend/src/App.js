@@ -4,6 +4,8 @@ import Chat from './pages/Chat'
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import AuthContext from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const socket = io.connect('http://localhost:3001');
 
@@ -24,7 +26,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Login/>} />
-        <Route path='/chat' element={<Chat/>} />
+        <Route path='/chat' element={<ProtectedRoute><Chat/></ProtectedRoute>} />
       </Routes>
     </>
     
