@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
 import "../Chat.css";
+import ChatBox from '../components/ChatBox';
 const ChatPage = () => {
 
   return (
@@ -32,8 +33,8 @@ const ChatPage = () => {
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                         </div>
                     </div>
+                    <ChatBox />
                 </div>
-                <textarea className="w-[100%] flex" name="postContent" defaultValue="Enter a message.." rows={4} cols={40}/>
             </div>
         </div>
     </div>
