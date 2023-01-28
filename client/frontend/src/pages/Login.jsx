@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import AuthComponent from "../components/AuthComponent";
 import "../Login.css";
 const AuthPage = () => {
   const [tabSelection, setTab] = useState("Home");
@@ -53,18 +54,20 @@ const AuthPage = () => {
         <div className="home-help-contact-container md:px-8 flex flex-col w-full md:w-1/2 items-center rounded-xl">
           <div className="home-tabs hidden md:flex w-full py-4 justify-center items-center">
             <div className="max-w-sm 3xl:max-w-md w-4/5 flex justify-around text-md 2xl:text-xl 3xl:text-3xl 3xl:py-4 font-semi-bold">
-              <div className="">Home</div>
-              <div className="">Help</div>
-              <div className="">Contact</div>
+              <div className="cursor-pointer">Home</div>
+              <div className="cursor-pointer">Help</div>
+              <div className="cursor-pointer">Contact</div>
             </div>
           </div>
-          <div className="auth-component-sign-up mt-10 xs:min-w-sm md:min-w-md w-5/6 md:w-3/4">
-            <div className="auth-component-header">
-              <div className="hidden md:flex flex-col gap-y-1 auth-component-header-large">
-                <h3 className="flex text-3xl 2xl:text-5xl 3xl:text-6xl font-bold">Get Started 👋</h3>
-                <p className="text-cleargray text-sm">
-                  Create your account now
-                </p>
+          <div className="auth-component-sign-up mt-10 xs:min-w-sm md:min-w-md w-5/6 md:w-full">
+            <div className="auth-component-header flex flex-col items-center">
+              <div className="w-5/6 px-4" >
+                <div className="hidden md:flex flex-col gap-y-1 auth-component-header-large">
+                  <h3 className="flex text-3xl 2xl:text-5xl 3xl:text-6xl font-bold text-center">Get Started 👋</h3>
+                  <p className="text-gray-600 text-sm">
+                    Create your account now
+                  </p>
+                </div>
               </div>
               <div className="md:hidden auth-component-header-small mt-2 flex flex-col gap-y-2 items-center">
                 <h3 className="flex text-4xl font-bold">Ask Eric</h3>
@@ -73,6 +76,9 @@ const AuthPage = () => {
                   healthcare policy.
                 </p>
               </div>
+            </div>
+            <div className="auth-component-body w-full flex flex-col items-center">
+              <AuthComponent mode="signup"/>
             </div>
           </div>
         </div>
