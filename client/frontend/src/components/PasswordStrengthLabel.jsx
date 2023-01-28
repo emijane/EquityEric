@@ -32,7 +32,7 @@ const PasswordStrengthLabel = ({password}) => {
         if (strongPassword.test(password) && password.length > 0 && strengthRef.current) {
             strengthRef.current.style.color = 'green';
             strengthRef.current.textContent  = 'Strong!';
-        } else if (mediumPassword.test(password)  && password.length > 0 && strengthRef.current) {
+        } else if (password.length > 10 && strengthRef.current) {
             strengthRef.current.style.color = 'blue';
             strengthRef.current.textContent  = 'Good';
         } else if (strengthRef.current) {

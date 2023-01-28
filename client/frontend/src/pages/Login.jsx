@@ -12,6 +12,7 @@ const AuthPage = () => {
    * Hero to the left can be its own component maybe to encapsulate the functionality
    * I'll do the switching of the auth - help - contact on this page
    */
+  const [authMode, setAuthMode] = useState("login");
   return (
     <div className="AuthPage-container-center w-[100vw] h-[95vh] 2xl:h-[100vh] flex justify-center items-center">
       <div className="AuthPage-container-outer pt-8 xl:pt-0 px-8 bg-white max-w-[1200px] 2xl:max-w-[1550px] 3xl:max-w-[90vw] w-[100vw] h-auto 2xl:h-[90vh] flex flex-row overflow-y-auto">
@@ -42,7 +43,9 @@ const AuthPage = () => {
                   />
                 </div>
                 <div className="person-info ml-6 flex flex-col justify-center gap-1">
-                  <div className="person-name text-white 2xl:text-xl">Angel Lopez Pol</div>
+                  <div className="person-name text-white 2xl:text-xl">
+                    Angel Lopez Pol
+                  </div>
                   <div className="person-role text-white text-sm 2xl:text-lg font-thin">
                     Consumer
                   </div>
@@ -61,13 +64,26 @@ const AuthPage = () => {
           </div>
           <div className="auth-component-sign-up mt-10 xs:min-w-sm md:min-w-md w-5/6 md:w-full">
             <div className="auth-component-header flex flex-col items-center">
-              <div className="w-5/6 px-4" >
-                <div className="hidden md:flex flex-col gap-y-1 auth-component-header-large">
-                  <h3 className="flex text-3xl 2xl:text-5xl 3xl:text-6xl font-bold text-center">Get Started 👋</h3>
-                  <p className="text-gray-600 text-sm">
-                    Create your account now
-                  </p>
-                </div>
+              <div className="w-5/6 px-4">
+                {authMode === "signup" ? (
+                  <div className="hidden md:flex flex-col gap-y-1 auth-component-header-large">
+                    <h3 className="flex text-3xl 2xl:text-5xl 3xl:text-6xl font-bold text-center">
+                      Get Started 👋
+                    </h3>
+                    <p className="text-gray-600 text-sm 2xl:text-xl 3xl:text-2xl">
+                      Create your account now
+                    </p>
+                  </div>
+                ) : (
+                  <div className="hidden md:flex flex-col gap-y-1 auth-component-header-large">
+                    <h3 className="flex text-3xl 2xl:text-5xl 3xl:text-6xl font-bold text-center">
+                      Welcome Back 👋
+                    </h3>
+                    <p className="text-gray-600 text-sm 2xl:text-xl 3xl:text-2xl">
+                      Sign in to your account
+                    </p>
+                  </div>
+                )}
               </div>
               <div className="md:hidden auth-component-header-small mt-2 flex flex-col gap-y-2 items-center">
                 <h3 className="flex text-4xl font-bold">Ask Eric</h3>
@@ -78,7 +94,7 @@ const AuthPage = () => {
               </div>
             </div>
             <div className="auth-component-body w-full flex flex-col items-center">
-              <AuthComponent mode="signup"/>
+              <AuthComponent mode={authMode} modeSwapHandler={setAuthMode} />
             </div>
           </div>
         </div>
