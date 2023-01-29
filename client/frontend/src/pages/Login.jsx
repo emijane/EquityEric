@@ -22,17 +22,15 @@ const AuthPage = () => {
           </div>
           <div className="hero-component-content">
             <div className="hero-component-header text-themeblue mt-16 3xl:mt-20 text-5xl 2xl:text-6xl tracking-tight pr-2 font-bold">
-              Get the help you deserve
+              Get the answers you deserve
             </div>
             <div className="hero-component-sub mt-6 2xl:mt-10 3xl:mt-18 text-md 2xl:text-2xl tracking-wide leading-8 pr-2 font-normal">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt
+            We created "Ask Eric", a chatbot that uses natural language processing (NLP) to provide accurate and truthful answers to your healthcare and health-related questions.
             </div>
             <div className="hero-component-testimonials w-full rounded-md px-8 py-8 2xl:px-10 mt-8 2xl:mt-20">
               {/** Note: This one is not gonna have right padding since it should extend the whole width */}
               <div className="testimonial-content text-white trackind-wide text-md 2xl:text-2xl 3xl:tracking-wider">
-                “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.”
+                “I highly recommend Ask Eric to anyone who is looking for accurate and reliable healthcare information.”
               </div>
               <div className="testimonial-footer mt-4 2xl:mt-10 flex">
                 <div className="person-image">
@@ -57,9 +55,9 @@ const AuthPage = () => {
         <div className="home-help-contact-container md:px-8 flex flex-col w-full md:w-1/2 items-center rounded-xl">
           <div className="home-tabs hidden md:flex w-full py-4 justify-center items-center">
             <div className="max-w-sm 3xl:max-w-md w-4/5 flex justify-around text-md 2xl:text-xl 3xl:py-4 font-semi-bold">
-              <div className="cursor-pointer text-themeblue">Home</div>
-              <div className="cursor-pointer">Help</div>
-              <div className="cursor-pointer">Contact</div>
+              <div className="cursor-pointer text-themeblue"><a href="./">Home</a></div>
+              <div className="cursor-pointer"><a href="./About">About</a></div>
+              <div className="cursor-pointer"><a href="https://github.com/emijane/EquityEric">GitHub</a></div>
             </div>
           </div>
           <div className="auth-component-sign-up mt-10 xs:min-w-sm md:min-w-md w-5/6 md:w-full">
@@ -68,7 +66,7 @@ const AuthPage = () => {
                 {authMode === "signup" ? (
                   <div className="hidden md:flex flex-col gap-y-1 auth-component-header-large">
                     <h3 className="flex text-3xl text-themeblue 2xl:text-5xl 3xl:text-6xl font-bold text-center">
-                      Get Started 👋
+                      Get started 👋
                     </h3>
                     <p className="text-gray-600 text-sm 2xl:text-xl 3xl:text-2xl">
                       Create your account now
@@ -77,9 +75,9 @@ const AuthPage = () => {
                 ) : (
                   <div className="hidden md:flex flex-col gap-y-1 auth-component-header-large">
                     <h3 className="flex text-3xl 2xl:text-5xl 3xl:text-6xl font-bold text-center">
-                      Welcome Back 👋
+                      Welcome back 👋
                     </h3>
-                    <p className="text-gray-600 text-sm 2xl:text-xl 3xl:text-2xl">
+                    <p className="text-gray-600 text-sm 2xl:text-xl 3xl:text-2xl mt-3">
                       Sign in to your account
                     </p>
                   </div>

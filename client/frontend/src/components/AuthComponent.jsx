@@ -246,7 +246,7 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
               type="text"
               id="email-input"
               className="w-full text-md xl:text-lg 2xl:text-2xl border-gray-200 rounded-md border-2 p-2"
-              placeholder="JohnJohnsonMC"
+              placeholder="Enter a username"
               value={userName}
               ref={userRef}
               onChange={(e) => setUserName(e.target.value)}
@@ -264,7 +264,7 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
               type="password"
               id="password-input"
               className="w-full text-md xl:text-lg 2xl:text-2xl border-gray-200 rounded-md border-2 p-2"
-              placeholder="FooBar"
+              placeholder="Enter a password"
               value={pwd}
               onChange={(e) => {
                 setPwd(e.target.value);
@@ -274,16 +274,16 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
           <button 
           type="submit"
           onClick={(e) => handleLogin(e)}
-          className="signup-button w-full mt-4 py-3 rounded-md bg-themeblue text-white text-xl xl:text-2xl 2xl:text-3xl font-semibold">
+          className="signup-button w-full mt-4 py-3 rounded-md bg-themeblue text-white text-xl xl:text-xl 2xl:text-2xl font-semibold">
             Log In
           </button>
         </form>
         {/* We have a sign up and login swapper that changes the context between sign up and log in */}
         <div
           id="login-signup-swapper"
-          className="w-full text-center inline-block mt-2"
+          className="w-full text-center inline-block mt-4"
         >
-          Don't have an account? <button onClick={() => modeSwapHandler('signup')}>Signup</button> here
+          Don't have an account? <button onClick={() => modeSwapHandler('signup')}>Sign up</button> here
         </div>
       </div>
     </div>
