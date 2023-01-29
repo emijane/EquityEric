@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 function MessageList() {
   const [messages, setMessages] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(false);
   const { auth } = useAuth();
   /**
    * @function handleGetResponse sends payload to the Django backend for a response from the bot. The query is in format
@@ -46,9 +47,11 @@ function MessageList() {
     }
     const newMessages = [...new_messages, message];
     setMessages(newMessages);
+    setIsDisabled(false);
 
   };
   const addMessage = (message) => {
+    setIsDisabled(true);
     if (!message.text || /^\s*$/.test(message.text)) {
       return;
     }
@@ -75,7 +78,7 @@ function MessageList() {
 
         </div>
       <div className="h-20 justify-self-end">
-        <MessageForm onSubmit={addMessage} />
+        <MessageForm disable={isDisabled} onSubmit={addMessage} />
       </div>
     </div>
   );
