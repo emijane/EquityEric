@@ -9,9 +9,9 @@ import useAuth from "../hooks/useAuth";
  * @returns 
  */
 const ProtectedRoute = ({}) => {
-    const {auth}  = useAuth();
+    const {auth, loading}  = useAuth();
 
-    if (auth)
+    if (auth && !loading)
     return (
             auth?.accessToken
                 ?  <Outlet />
