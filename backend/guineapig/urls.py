@@ -1,8 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 
-from . import views
+from guineapig import viewsets
 
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("<str:room_name>/", views.lobby, name="lobby")
-]
+    # views
+    path("login/", viewsets.LoginView.as_view()),
+    path("register/", viewsets.RegisterView.as_view()),
+] + [path("api-auth/", include("rest_framework.urls"))]
