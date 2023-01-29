@@ -11,12 +11,7 @@ import useAuth from "../hooks/useAuth";
 const ProtectedRoute = ({}) => {
     const {auth}  = useAuth();
 
-    if (auth)
-    return (
-            auth?.accessToken
-                ?  <Outlet />
-                : <div>Unauthorized for now</div>
-    );
+    return < Outlet />
 }
 
 export default ProtectedRoute;
