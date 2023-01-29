@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
        persistAuth();
     }, [])
     return (
-        <AuthContext.Provider value={{ auth, setAuth }}>
+        <AuthContext.Provider value={{ auth, setAuth, loading }}>
            {children}
         </AuthContext.Provider>
     )

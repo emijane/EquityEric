@@ -83,7 +83,8 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
         )
       console.log("This is running")
       response = await response.json();
-      const accessToken = response?.data?.accessToken;
+      //console.log(JSON.stringify(response));
+      const accessToken = response?.security_token;
       localStorage.setItem("askEricAccessToken", accessToken);
       console.log(accessToken);
       setAuth({ email, pwd, accessToken });
