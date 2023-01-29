@@ -14,7 +14,7 @@ class Account(models.Model):
 
 
 class Conversation(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    conversation_id = models.IntegerField(max_length=10)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    conversation_id = models.IntegerField()
     user_utterance = models.CharField(max_length=1000)
     bert_response = models.CharField(max_length=1000)

@@ -1,6 +1,7 @@
 from django.urls import path, include
 
 from guineapig import viewsets
+from guineapig import views
 
 urlpatterns = [
     path('bottalk/', views.BotView.as_view()),
