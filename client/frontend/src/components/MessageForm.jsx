@@ -20,9 +20,9 @@ const handleSubmit = e => {
 }
 
   return (
-    <form className="message-form flex gap-4" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Add a message" value={input} name="text" className="message-input flex message-form-container w-[100%] p-2" onChange={handleChange}></input>
-        <button className='message-button' onClick={handleSubmit}><i className="fa-solid fa-comment send-icon"></i></button>
+    <form className="message-form flex gap-4" onSubmit={handleSubmit} >
+        <input type="text" placeholder="Add a message" value={input} name="text" className="message-input flex message-form-container w-[100%] p-2" onChange={handleChange} disabled={props.disable}></input>
+        <button className='message-button' onClick={handleSubmit}><i className="fa-solid fa-comment send-icon" disabled={props.disable}></i></button>
     </form>
   );
 }

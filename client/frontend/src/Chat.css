@@ -66,3 +66,22 @@ input {
 input:focus {
     border: 2px solid #3894FF !important;
 }
+.chat-messages {
+    width: 100%;
+    height: calc(100% - 60px);
+    overflow-y: auto;
+    scrollbar-color: #999 #333;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 6px; /* Mostly for vertical scrollbars */
+  height: 10px; /* Mostly for horizontal scrollbars */
+  margin-left:1px;
+}
+.chat-messages::-webkit-scrollbar-thumb { /* Foreground */
+    background: lightgrey;
+    
+}
+.chat-messages::-webkit-scrollbar-track { /* Background */
+    background: transparent;
+}

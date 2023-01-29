@@ -3,9 +3,11 @@ import MessageForm from "./MessageForm";
 import Message from "./Message";
 import "../Chat.css";
 import useAuth from "../hooks/useAuth";
+import { useEffect } from "react";
 
 function MessageList() {
   const [messages, setMessages] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(false);
   const { auth } = useAuth();
   /**
    * @function handleGetResponse sends payload to the Django backend for a response from the bot. The query is in format
@@ -14,6 +16,8 @@ function MessageList() {
    * @note no Auth needed rn
    */
   const handleGetResponse = async (message, newMessages) => {
+    const placeholderMessages = [...newMessages, {text: 'loader', id: 19, isBot: true}];
+    setMessages(placeholderMessages);
     const token = auth?.accessToken ? auth.accessToken : "no access token";
     const body = {
       utterance: message.text,
@@ -41,9 +45,11 @@ function MessageList() {
     }
     const newMessages = [...new_messages, message];
     setMessages(newMessages);
+    setIsDisabled(false);
 
   };
   const addMessage = (message) => {
+    setIsDisabled(true);
     if (!message.text || /^\s*$/.test(message.text)) {
       return;
     }
@@ -51,15 +57,26 @@ function MessageList() {
     
     setMessages(newMessages);
     console.log(message.text);
+    
     handleGetResponse(message, newMessages);
   };
 
-  return (
-    <div className="h-full flex flex-col">
-      <Message messages={messages} />
+  useEffect(() => {
+    const el = document.getElementById('chat-messages');
+    // id of the chat container ---------- ^^^
+    if (el) {
+      el.scrollTop = el.scrollHeight;
+    }
+  }, [messages])
 
-      <div>
-        <MessageForm onSubmit={addMessage} />
+  return (
+    <div className="h-[70vh] max-h-[70vh] flex flex-col justify-between">
+        <div id="chat-messages" className="chat-messages">
+        <Message messages={messages} />
+
+        </div>
+      <div className="h-20 justify-self-end">
+        <MessageForm disable={isDisabled} onSubmit={addMessage} />
       </div>
     </div>
   );

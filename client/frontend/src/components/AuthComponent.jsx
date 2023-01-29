@@ -163,7 +163,7 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
             </div>
           </div>
           <div className="form-element-inner flex flex-col gap-y-2 items-start w-full">
-            <label for="email" className="text-sm xl:text-md 2xl:text-2xl text-gray-800">
+            <label for="username" className="text-sm xl:text-md 2xl:text-2xl text-gray-800">
               Username
             </label>
             <input
