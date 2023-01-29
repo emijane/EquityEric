@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-=dg0ef8p%%6p=gjj7^w8&s=r#dx(!sz^0hw1_j^$s4h=kz5qhy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "e440-2601-601-1b80-33a0-99e8-519d-5797-1c39.ngrok.io" # output of ngrok tunnel
+]
 
 
 # Application definition
@@ -39,15 +41,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000"
 ]
 
 ROOT_URLCONF = 'backend.urls'
