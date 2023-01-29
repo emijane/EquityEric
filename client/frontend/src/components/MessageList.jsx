@@ -35,11 +35,9 @@ function MessageList() {
       }
     );
     // Then, take the JSON returned from the response
-    const { display } = {display:'SAMPLE TEXT'} //await response.json();
+    const { display } = await response.json();
     // Bot Message Please
-    setTimeout(() => {
-        addBotMessage({text: display, id: 20, isBot: true}, newMessages)
-    }, 2000)
+    addBotMessage({text: display, id: 20, isBot: true}, newMessages)
   };
   const addBotMessage = (message, new_messages) => {
     if (!message.text || /^\s*$/.test(message.text)) {
