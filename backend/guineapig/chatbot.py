@@ -36,13 +36,11 @@ OPEN_AI_HYPERPARAMETERS = {
 
 
 
-def retrieve_response(question: str):
+def retrieve_response(question: str, relevant_context: list[str]):
     """Given a user's question, generate a response."""
     openai.api_key = random.choice(
         OPEN_AI_KEYS
     )  # Pick a random one so we don't get rate limited by just one
-
-    relevant_context = context_filter(question)
 
     response = openai.Completion.create(
         model="text-davinci-003",
@@ -52,6 +50,6 @@ def retrieve_response(question: str):
     )
 
     if "choices" in response:
-        return response["choices"][0]["text"]
+        return response["choices"][0]["text"].strip()
 
     raise NotImplementedError("Not sure what to do here")
