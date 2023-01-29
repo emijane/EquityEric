@@ -9,7 +9,7 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState({user: "FAKE USER TO ALLOW FOR CHAT ROUTE ACCESS (TEMP)"});
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     // I'm additionally gonna have a useEffect that happens on every reload, that pings the "refresh" endpoint 
     // to check if we have an http refresh token and persist our logged-in state upon refresh
     const exampleFetch = async () => {
@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
         console.log(accessToken);
 
         setAuth({accessToken: accessToken});
+        setLoading(false);
     }
     useEffect(() => {
        persistAuth();

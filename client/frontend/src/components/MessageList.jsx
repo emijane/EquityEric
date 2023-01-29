@@ -3,6 +3,7 @@ import MessageForm from "./MessageForm";
 import Message from "./Message";
 import "../Chat.css";
 import useAuth from "../hooks/useAuth";
+import { useEffect } from "react";
 
 function MessageList() {
   const [messages, setMessages] = useState([]);
@@ -14,6 +15,8 @@ function MessageList() {
    * @note no Auth needed rn
    */
   const handleGetResponse = async (message, newMessages) => {
+    const placeholderMessages = [...newMessages, {text: 'loader', id: 19, isBot: true}];
+    setMessages(placeholderMessages);
     const token = auth?.accessToken ? auth.accessToken : "no access token";
     const body = {
       utterance: message.text,
@@ -21,7 +24,7 @@ function MessageList() {
       security_token: token,
     };
     // Fetch with post request
-    let response = await fetch(
+    /**let response = /await fetch(
       `https://ae90-2601-601-1b80-33a0-99e8-519d-5797-1c39.ngrok.io/api/bottalk/`,
       {
         body: JSON.stringify(body),
@@ -29,11 +32,13 @@ function MessageList() {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }
-    );
+    );*/
     // Then, take the JSON returned from the response
-    const { display } = await response.json();
+    const { display } = {display:'SAMPLE TEXT'} //await response.json();
     // Bot Message Please
-    addBotMessage({text: display, id: 20, isBot: true}, newMessages)
+    setTimeout(() => {
+        addBotMessage({text: display, id: 20, isBot: true}, newMessages)
+    }, 2000)
   };
   const addBotMessage = (message, new_messages) => {
     if (!message.text || /^\s*$/.test(message.text)) {
@@ -51,14 +56,25 @@ function MessageList() {
     
     setMessages(newMessages);
     console.log(message.text);
+    
     handleGetResponse(message, newMessages);
   };
 
-  return (
-    <div className="h-full flex flex-col">
-      <Message messages={messages} />
+  useEffect(() => {
+    const el = document.getElementById('chat-messages');
+    // id of the chat container ---------- ^^^
+    if (el) {
+      el.scrollTop = el.scrollHeight;
+    }
+  }, [messages])
 
-      <div>
+  return (
+    <div className="h-[70vh] max-h-[70vh] flex flex-col justify-between">
+        <div id="chat-messages" className="chat-messages">
+        <Message messages={messages} />
+
+        </div>
+      <div className="h-20 justify-self-end">
         <MessageForm onSubmit={addMessage} />
       </div>
     </div>

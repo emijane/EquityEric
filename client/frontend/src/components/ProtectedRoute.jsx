@@ -9,9 +9,16 @@ import useAuth from "../hooks/useAuth";
  * @returns 
  */
 const ProtectedRoute = ({}) => {
-    const {auth}  = useAuth();
+    const {auth, loading}  = useAuth();
 
-    return < Outlet />
+    if (loading) {
+        return <div>Loading...</div>
+    } else
+    return (
+        auth.accessToken ? 
+            <Outlet/> :
+            <Navigate to="/"/>
+    )
 }
 
 export default ProtectedRoute;
