@@ -7,20 +7,15 @@ import { Routes, Route } from 'react-router-dom';
 import AuthContext from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
-const socket = io.connect('http://localhost:3001');
 
 function App() {
   const [message, setMessage] = useState('');
   const [messageReceived, setMessageReceived] = useState('s');
-  const sendMessage = () => {
-    socket.emit('send_message', { message });
-  };
+
 
   useEffect(() => {
-    socket.on("receive_message", (data) => {
-      setMessageReceived(data.message);
-    });
-  }, [socket]);
+
+  }, []);
 
   return (
     <>
