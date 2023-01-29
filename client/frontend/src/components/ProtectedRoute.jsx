@@ -11,10 +11,11 @@ import useAuth from "../hooks/useAuth";
 const ProtectedRoute = ({}) => {
     const {auth}  = useAuth();
 
+    if (auth)
     return (
-            auth?.user
+            auth?.accessToken
                 ?  <Outlet />
-                : <Navigate to="/" replace />
+                : <div>Unauthorized for now</div>
     );
 }
 

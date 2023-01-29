@@ -27,3 +27,6 @@ class BotView(views.APIView):
             return Response(json.dumps(response), status.HTTP_418_IM_A_TEAPOT)
         except:
             return Response(json.dumps({"display": "Error"}), status.HTTP_418_IM_A_TEAPOT)
+
+def index(request):
+    return render(request, "guineapig/index.html")

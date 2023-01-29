@@ -6,30 +6,22 @@ const cors = require('cors');
 const { rmSync } = require('fs');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
+const Sequelize = require('sequelize');
 // Importing bcrypt for password hashing and all that
 
+const sequelize = new Sequelize('askeric', 'root', 'root')
 app.use(cors());
 app.use(express.json());
+const db = require("./models");
 
-const db = mysql.createConnection({
-    user: 'root',
-    host: 'localhost',
-    password: 'password',
-    database: 'LoginSystem',
+db.sequelize.sync().then(() => {
+    app.listen(3001, () => {
+       console.log("Server is now running on port 3001") 
+    })
 })
-db.connect(function(err) {
-    console.log("If this works, my DB is connected");
-  });
 // No need to worry about serving the actual React, since Vercel takes care of that :)
-const server = http.createServer(app);
 
 
-const io = new Server(server, {
-    cors: {
-        origin: 'http://localhost:3000',
-        methods: ['GET', 'POST'],
-    },
-});
 
 app.post('/api/login', async function (req, res) {
     const {email, pwd} = req.body;
@@ -57,9 +49,6 @@ app.post('/api/login', async function (req, res) {
  * email
  * password,
  * location,
- * userID
- * health-insurance-plan-details  (WTF????)
- * 
  */
 app.post('/api/register', async function (req, res) {
     const {email, pwd, firstName, lastName} = req.body;
@@ -70,35 +59,8 @@ app.post('/api/register', async function (req, res) {
     const hashedPwd = await bcrypt.hash(pwd,10);
     // INSHALLAH userID created from email seed is unique nevermind cant use seed
     const userID = nanoid();
-    // Full honesty I have no Idea how to implement insurance stuff so I'm gonna leave that for later
-    if (!email || !pwd || !firstName || !lastName)
-        return res.status(400).json({message: "Please provide all 4 fields: First Name, Last Name, Email, and Password"})
-    db.query(
-        "INSERT INTO users (email, password, user-id, first-name, last-name) VALUES (?, ?, ?, ?, ?)",
-        [email, hashedPwd, userID, firstName, lastName],
-        (err, result) => {
-            // I hate SQL so much especially this half-baked MySQL I'm writing I wish this was PostGre
-            (err, result) => {
-                if (err)
-                    res.status(400).json({message: "Something went wrong. Ensure your input is valid"});
-                if (result) {
-                    res.status(200).json({message: "Account Successfully created! Now try logging in."})
-                }
-            }
-        }
-    )
+
 })
 app.post('/api/refresh', function (req, res) {
 
   });
-io.on('connection', (socket) => {
-    console.log(`User Connected: ${socket.id}`);
-
-    socket.on('send_message', (data) => {
-        socket.broadcast.emit('receive_message', data);
-    }) 
-});
-
-server.listen(3001, () => {
-    console.log('FABULOSOOOO');
-})
