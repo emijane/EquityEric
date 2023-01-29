@@ -10,3 +10,10 @@ class Account(models.Model):
     num_of_kids = models.IntegerField(default=0)
     insurance_company = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+
+class Conversation(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    conversation_id = models.IntegerField(max_length=10)
+    user_utterance = models.CharField(max_length=1000)
+    bert_response = models.CharField(max_length=1000)
