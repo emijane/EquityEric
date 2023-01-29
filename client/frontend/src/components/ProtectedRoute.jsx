@@ -12,7 +12,7 @@ const ProtectedRoute = ({}) => {
     const {auth}  = useAuth();
 
     return (
-            auth?.user
+            auth?.accessToken
                 ?  <Outlet />
                 : <Navigate to="/" replace />
     );
