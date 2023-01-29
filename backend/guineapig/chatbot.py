@@ -1,6 +1,7 @@
 import openai
 import random
 import os
+from textfilter.maxalgo import context_filter
 
 # Load 'em from environmental variables
 OPEN_AI_KEYS = [
@@ -33,23 +34,13 @@ OPEN_AI_HYPERPARAMETERS = {
 }
 
 
-def retrieve_context(question: str) -> list[str]:
-    """Return a list of relevant factsheets required to answer the question."""
-    return [
-        # TODO: max working on this
-        "A Health Savings Account (HSA) is a tax-advantaged account created for or by individuals covered under high-deductible health plans (HDHPs) to save for qualified medical expenses.",
-        "Contributions are made into the account by the individual or their employer and are limited to a maximum amount each year."
-        "The contributions are invested over time and can be used to pay for qualified medical expenses, such as medical, dental, and vision care and prescription drugs.",
-    ]
 
 
-def retrieve_response(question: str):
+def retrieve_response(question: str, relevant_context: list[str]):
     """Given a user's question, generate a response."""
     openai.api_key = random.choice(
         OPEN_AI_KEYS
     )  # Pick a random one so we don't get rate limited by just one
-
-    relevant_context = retrieve_context(question)
 
     response = openai.Completion.create(
         model="text-davinci-003",
@@ -59,6 +50,6 @@ def retrieve_response(question: str):
     )
 
     if "choices" in response:
-        return response["choices"][0]["text"]
+        return response["choices"][0]["text"].strip()
 
     raise NotImplementedError("Not sure what to do here")
