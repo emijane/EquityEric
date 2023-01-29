@@ -33,6 +33,10 @@
     border-top-right-radius: 0.8rem;
     border-bottom-left-radius: 0.8rem; 
 }
+.message-row.is-bot {
+    background-color: #F5F8FF;
+    color: #000000B2;
+}
 
 .message-button {
     background-color: #3894FF;
