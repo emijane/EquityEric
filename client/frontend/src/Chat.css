@@ -24,3 +24,41 @@
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 }
+
+.message-row{
+    color: white;
+    background-color: #3894FF;
+    padding: 1rem;
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem; 
+}
+
+.message-button {
+    background-color: #3894FF;
+    border-radius: 50%;
+    width: 65px;
+    height: 60px;
+    transition: 0.25s;
+}
+
+.message-button:hover {
+    background-color: #005CC7;
+    box-shadow: 3px 2px 23px rgba(0, 50, 108, 0.1);
+}
+
+.send-icon {
+    font-size: 1.7rem;
+    color:white;
+}
+
+input {
+    border: 1px solid #3894FF;
+    border-radius: 1rem;
+    padding: 1rem !important;
+    box-shadow: 3px 2px 23px rgba(0, 50, 108, 0.1);
+}
+
+input:focus {
+    border: 2px solid #3894FF !important;
+}

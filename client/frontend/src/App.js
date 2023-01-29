@@ -1,7 +1,6 @@
 import './App.css';
 import Login from './pages/Login'
 import Chat from './pages/Chat'
-import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AuthContext from './context/AuthContext';
@@ -26,17 +25,6 @@ function App() {
         </Route>
       </Routes>
     </>
-    
-    /*
-    <div className="App">
-      <input placeholder="Message..." onChange={(event) => {
-        setMessage(event.target.value);
-      }}/>
-      <button onClick={sendMessage}>Send Message</button>
-      <h1>Message:</h1>
-      {messageReceived}
-    </div>
-    */
   )
 }
 
