@@ -25,7 +25,7 @@ function MessageList() {
       security_token: token,
     };
     // Fetch with post request
-    /**let response = /await fetch(
+    let response = await fetch(
       `https://ae90-2601-601-1b80-33a0-99e8-519d-5797-1c39.ngrok.io/api/bottalk/`,
       {
         body: JSON.stringify(body),
@@ -33,7 +33,7 @@ function MessageList() {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       }
-    );*/
+    );
     // Then, take the JSON returned from the response
     const { display } = {display:'SAMPLE TEXT'} //await response.json();
     // Bot Message Please
