@@ -1,9 +1,6 @@
 .vercel
 node_modules
-<<<<<<< HEAD
 nodemon
-=======
 .venv*
 secrets.sh
 *.pyc
->>>>>>> 79b4b14723e18a6f6d9283c90645cfe1a2c65404
