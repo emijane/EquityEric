@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
 const Message = ({ messages, completeMessage }) => {
   const [edit, setEdit] = useState({
     id: null,
@@ -18,7 +17,6 @@ const Message = ({ messages, completeMessage }) => {
         key={index}
       >
         <div key={message.id} onClick={() => completeMessage(message.id)}>
-          {message.text == 'loader' ? <ClipLoader/> :  message.text}
         </div>
       </div>
     </div>
