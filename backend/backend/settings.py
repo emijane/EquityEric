@@ -35,16 +35,15 @@ APPEND_SLASH = False
 # Application definition
 
 INSTALLED_APPS = [
-    "daphne",
-    "guineapig",
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "rest_framework",
-    "corsheaders",
+    'guineapig',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    "corsheaders"
 ]
 
 MIDDLEWARE = [
@@ -131,14 +130,4 @@ STATIC_URL = "static/"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-CHANNEL_LAYERS = {
-    "default": {
-        # https://channels.readthedocs.io/en/stable/tutorial/part_2.html#enable-a-channel-layer
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
-        },
-    },
-}
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
