@@ -14,20 +14,20 @@ class BotView(views.APIView):
         user_id = data["userId"]
         convo = data["conversationId"]
         question = data["utterance"]
-        # try:
-        answer = retrieve_response(question)
-        response = {
-            "display": answer,
-        }
-        Conversation.objects.create(
-            user=request.user,
-            conversation_id=convo,
-            user_utterance=question,
-            bert_response=answer)
-        return Response(response, status.HTTP_200_OK)
-        # except Exception as e:
-            # print(e)
-            # return Response(json.dumps({"display": "Error"}), status.HTTP_418_IM_A_TEAPOT)
+        try:
+            answer = retrieve_response(question)
+            response = {
+                "display": answer,
+            }
+            Conversation.objects.create(
+                user=request.user,
+                conversation_id=convo,
+                user_utterance=question,
+                bert_response=answer)
+            return Response(response, status.HTTP_200_OK)
+        except Exception as e:
+            print(e)
+            return Response(json.dumps({"display": "Error"}), status.HTTP_418_IM_A_TEAPOT)
 
 def index(request):
     return render(request, "guineapig/index.html")
