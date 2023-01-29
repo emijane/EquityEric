@@ -25,17 +25,18 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
      */
     e.preventDefault();
     try {
-        const response = await fetch(`https://ae90-2601-601-1b80-33a0-99e8-519d-5797-1c39.ngrok.io/api/login/`,
+        let response = await fetch(`https://ae90-2601-601-1b80-33a0-99e8-519d-5797-1c39.ngrok.io/api/login/`,
               {
-                  body: JSON.stringify({ username: email, password: pwd }),
+                  body: JSON.stringify({ username: userName, password: pwd }),
                   method: "POST",
                   headers: { 'Content-Type': 'application/json' },
                   withCredentials: true
               }
         )
         console.log("This is running")
+        response = await response.json();
         //console.log(JSON.stringify(response));
-        const accessToken = response?.token;
+        const accessToken = response?.security_token;
         localStorage.setItem("askEricAccessToken", accessToken);
         console.log(accessToken);
         setAuth({ email, pwd, accessToken });
@@ -72,7 +73,7 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
      */
 
     try {
-      const response = await fetch(`https://ae90-2601-601-1b80-33a0-99e8-519d-5797-1c39.ngrok.io/api/register/`,
+      let response = await fetch(`https://ae90-2601-601-1b80-33a0-99e8-519d-5797-1c39.ngrok.io/api/register/`,
               {
                   body: JSON.stringify({ username: userName, email: email, password: pwd, first_name: firstName, last_name: lastName }),
                   method: "POST",
@@ -81,6 +82,7 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
               }
         )
       console.log("This is running")
+      response = await response.json();
       const accessToken = response?.data?.accessToken;
       localStorage.setItem("askEricAccessToken", accessToken);
       console.log(accessToken);
@@ -235,18 +237,18 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
           <p ref={errRef} className={errMsg ? "text-white bg-red-600 w-full text-center py-2 text-sm xl:text-lg 2xl:text-2xl" : "hidden"} aria-live="assertive">{errMsg}</p>
 
           <div className="form-element-inner flex flex-col gap-y-2 items-start w-full">
-            <label for="email" className="text-sm xl:text-lg 2xl:text-2xl text-gray-800">
-              Email
+            <label for="username" className="text-sm xl:text-lg 2xl:text-2xl text-gray-800">
+              Username
             </label>
             <input
               required
               type="text"
               id="email-input"
               className="w-full text-md xl:text-lg 2xl:text-2xl border-gray-200 rounded-md border-2 p-2"
-              placeholder="John@gmail.com"
-              value={email}
+              placeholder="JohnJohnsonMC"
+              value={userName}
               ref={userRef}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setUserName(e.target.value)}
             ></input>
           </div>
           <div className="form-element-inner flex flex-col gap-y-2 items-start w-full">
@@ -270,7 +272,7 @@ const AuthComponent = ({mode = "signup", modeSwapHandler}) => {
           </div>
           <button 
           type="submit"
-          onClick={handleSignUp}
+          onClick={(e) => handleLogin(e)}
           className="signup-button w-full mt-4 py-3 rounded-md bg-themeblue text-white text-xl xl:text-2xl 2xl:text-3xl font-semibold">
             Log In
           </button>
